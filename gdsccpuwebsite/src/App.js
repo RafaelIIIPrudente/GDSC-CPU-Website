@@ -1,12 +1,13 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import navBar from './partials/navbar';
 
 function App() {
   return (
-    <>
-    "fsdfsdf"
-    </>
+    <div>
+      {navBar}
+    </div>
   );
-}
+};
 
 export default App;
