@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
-import navBar from './partials/navbar';
+import NavBar from './components/partials/navbar';
 
 function App() {
-  return (
-    <div>
-      {navBar}
-    </div>
-  );
-};
-
+    return (
+      <>
+        <NavBar />
+      </>
+    );
+  };
+  
 export default App;
+ 

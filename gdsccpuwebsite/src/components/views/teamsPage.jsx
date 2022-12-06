@@ -1,6 +1,6 @@
 import React from "react";
 
-const footer = () => {
+const TeamsPage = () => {
   return (
     <div>
 
@@ -8,4 +8,4 @@ const footer = () => {
   )
 };
 
-export default footer;
+export default TeamsPage;
