@@ -1,6 +1,6 @@
 import React from "react";
 
-const eventsPage = () => {
+const HomePage = () => {
   return (
     <div>
 
@@ -8,4 +8,4 @@ const eventsPage = () => {
   )
 };
 
-export default eventsPage;
+export default HomePage;
