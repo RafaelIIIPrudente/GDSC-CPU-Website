@@ -1,6 +1,6 @@
 import React from "react";
 
-const socials = () => {
+const Header  = () => {
   return (
     <div>
 
@@ -8,4 +8,4 @@ const socials = () => {
   )
 };
 
-export default socials;
+export default Header ;
