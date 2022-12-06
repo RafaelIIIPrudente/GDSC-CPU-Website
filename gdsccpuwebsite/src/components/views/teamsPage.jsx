@@ -2,9 +2,11 @@ import React from "react";
 
 const TeamsPage = () => {
   return (
-    <div>
-
-    </div>
+    <>
+    <h1 class = 'text-center'>
+      Our Team
+    </h1>
+    </>
   )
 };
 
