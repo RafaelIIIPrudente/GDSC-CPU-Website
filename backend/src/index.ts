@@ -2,7 +2,7 @@ import express from "express";
 import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
-// dotenv.config();
+dotenv.config();
 
 
 const app = express();
@@ -31,6 +31,6 @@ app.get('/', (req, res) => {
   res.send("Hello");
 })
 
-app.listen(process.env.APP_PORT, () => {
-  console.log("HEHE"); 
-});
+// app.listen(process.env.APP_PORT, () => {
+//   console.log("HEHE"); 
+// });
