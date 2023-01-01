@@ -2,6 +2,9 @@ import express from "express";
 import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import userRoute from "./routes/userRoute";
+
+//automatically loads environment variables from a . env file into the process. env object.
 dotenv.config();
 
 
@@ -26,6 +29,8 @@ app.use(session({
   }
 }))
 
+//User router
+app.use(userRoute)
 
 app.get('/', (req, res) => {
   res.send("Hello");

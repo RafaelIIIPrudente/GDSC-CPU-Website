@@ -1,0 +1,11 @@
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+  name: "Rafael III",
+  emai: "rflprdnt@gmail.com",
+  password: "rappy",
+  confPassword: "rappy"
+  role: "admin"
+
+}
