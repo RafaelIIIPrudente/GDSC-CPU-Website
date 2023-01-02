@@ -3,12 +3,18 @@ import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
 import userRoute from "./routes/userRoute";
+import database from "./config/database"
 
 //automatically loads environment variables from a . env file into the process. env object.
 dotenv.config();
 
 
 const app = express();
+
+//database sync
+// (async() => {
+//   await database.sync();
+// });
 
 //frontend can send requests along with cooking and by including their credentials
 app.use(cors({

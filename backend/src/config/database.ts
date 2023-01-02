@@ -1,9 +1,17 @@
-import { Sequelize } from "sequelize";
+const Sequelize = require('sequelize')
 
-const database = new Sequelize('auth_db', 'root', '', {
-  host: "localhost",
-  dialect: "mysql",
+import dbConfig from "./dbConfig";
+
+const database = new Sequelize(dbConfig.DATABASE, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.DIALECT
 });
+
+
+const db:any = {};
+db.database = database;
+db.models = {};
+db.models.Users = require('./userModel')(database, Sequelize.Datatypes)
 
 export default database;
 
