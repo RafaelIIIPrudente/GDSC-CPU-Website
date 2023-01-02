@@ -4,7 +4,9 @@ import { Request, Response } from "express";
 
 export const getUsers = async(req: Request, res: Response) => {
   try {
-    const response = await Users.findAll();
+    const response = await Users.findAll({
+      attributes:['id', 'name', 'email', 'role']
+    });
     res.status(200).json(response);
   } catch (error: any) {
     res.status(500).json({msg: error.message});
@@ -14,6 +16,7 @@ export const getUsers = async(req: Request, res: Response) => {
 export const getUserById = async(req: Request, res: Response) => {
   try {
     const response = await Users.findOne({
+      attributes:['id', 'name', 'email', 'role'],
       where: {
         uuid: req.params.id
       }
@@ -42,11 +45,57 @@ export const createUser = async(req: Request, res: Response) => {
   }
 };
 
-export const updateUser = (req: Request, res: Response) => {
-  
+export const updateUser = async (req: Request, res: Response) => {
+  const user = await Users.findOne({
+    
+    where: {
+      uuid: req.params.id
+    }
+  });
+  if(!Users) return res.status(404).json({msg: "User not found"})
+  const {name, email, password, confPassword, role} = req.body;
+  let hashPassword;
+  if(password === "" || password === null) {
+    hashPassword = Users.password
+  } else {
+    hashPassword = await argon2.hash(password);
+  }
+  if(password !== confPassword) return res.status(400).json({msg: "Password does not match!"})
+  try {
+    await Users.update({
+      name:name,
+      email: email,
+      password: password,
+      role: role
+    },{
+      where:{
+        id: Users.id
+      }
+    })
+    res.status(200).json({msg: "User Updated"})
+  } catch (error: any) {
+    res.status(400).json({msg: error.message});
+  }
 };
 
-export const deleteUser = (req: Request, res: Response) => {
-  
+export const deleteUser = async(req: Request, res: Response) => {
+  const user = await Users.findOne({
+    
+    where: {
+      uuid: req.params.id
+    }
+  });
+  if(!Users) return res.status(404).json({msg: "User not found"});
+  try {
+    await Users.destroy({
+      where:{
+        id: Users.id
+      }
+    })
+    res.status(200).json({msg: "User Deleted"})
+  } catch (error: any) {
+    res.status(400).json({msg: error.message});
+  }
 };
+
 
