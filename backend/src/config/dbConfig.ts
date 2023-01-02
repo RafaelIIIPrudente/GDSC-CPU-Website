@@ -3,7 +3,8 @@ const dbConfig = {
     USER: 'root',
     PASSWORD: '',
     DATABASE: 'auth_db',
-    DIALECT: 'mysql'
+    DIALECT: "mysql",
+    PORT: 3306,
 }
 
 export default dbConfig;

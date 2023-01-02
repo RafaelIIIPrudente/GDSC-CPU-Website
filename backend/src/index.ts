@@ -12,9 +12,18 @@ dotenv.config();
 const app = express();
 
 //database sync
-// (async() => {
-//   await database.sync();
-// });
+async function testConnection() {
+    try {
+      await database.authenticate();
+      await database.sync();
+      console.log('Connected')
+    } catch(err) {
+      console.log('Cannot Connect to Database');
+    }; 
+};
+testConnection();
+
+
 
 //frontend can send requests along with cooking and by including their credentials
 app.use(cors({
