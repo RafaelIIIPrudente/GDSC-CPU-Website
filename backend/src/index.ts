@@ -12,15 +12,6 @@ dotenv.config();
 const app = express();
 
 //database sync
-// async function testConnection() {
-//     try {
-//       await database.sync();
-//       console.log('Connected')
-//     } catch(err) {
-//       console.log('Cannot Connect to Database');
-//     }; 
-// };
-// testConnection();
 
 // async function testingConnection() {
 //   try {
@@ -57,11 +48,6 @@ app.use(session({
 
 //User router
 app.use(userRoute)
-
-app.get('/', (req, res) => {
-  res.send("Hello");
-})
-
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Server is up and Running"); 
