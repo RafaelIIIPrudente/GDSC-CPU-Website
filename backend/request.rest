@@ -7,7 +7,12 @@ Content-Type: application/json
   password: "rappy",
   confPassword: "rappy"
   role: "admin"
+}
 
+
+
+
+<<<<<<< HEAD
 }
 
 
@@ -28,3 +33,5 @@ Content-Type: application/json
 
 //delete user (code after "user/" needed)
 DELETE http://localhost:5000/users/
+=======
+>>>>>>> 4dc30e113988b6c9999b7715bfc4646c7b5241f3
