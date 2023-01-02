@@ -9,3 +9,22 @@ Content-Type: application/json
   role: "admin"
 
 }
+
+
+
+//update users   (code after "user/" needed)
+PATCH http://localhost:5000/users/
+Content-Type: application/json
+
+{
+  name: "Rafael III Updated",
+  emai: "rflprdnt@gmail.com",
+  password: "",
+  confPassword: ""
+  role: "admin"
+
+}
+
+
+//delete user (code after "user/" needed)
+DELETE http://localhost:5000/users/
