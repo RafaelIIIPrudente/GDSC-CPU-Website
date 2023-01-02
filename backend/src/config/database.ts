@@ -8,17 +8,5 @@ const database = new Sequelize(dbConfig.DATABASE, dbConfig.USER, dbConfig.PASSWO
   dialect: "mysql"
 });
 
-// database.authenticate().then(() => {
-//   console.log("Connected to database")
-// }).catch(() => {
-//   console.log('Cannot Connect')
-// });
-
-
-// const db:any = {};
-// db.database = database;
-// db.models = {};
-// db.models.Users = require('./userModel')(database, Sequelize.Datatypes)
-
 export default database;
 
