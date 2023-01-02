@@ -3,7 +3,7 @@ import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
 import userRoute from "./routes/userRoute";
-import database from "./config/database"
+// import database from "./config/database"
 
 //automatically loads environment variables from a . env file into the process. env object.
 dotenv.config();
@@ -12,16 +12,27 @@ dotenv.config();
 const app = express();
 
 //database sync
-async function testConnection() {
-    try {
-      await database.authenticate();
-      await database.sync();
-      console.log('Connected')
-    } catch(err) {
-      console.log('Cannot Connect to Database');
-    }; 
-};
-testConnection();
+// async function testConnection() {
+//     try {
+//       await database.sync();
+//       console.log('Connected')
+//     } catch(err) {
+//       console.log('Cannot Connect to Database');
+//     }; 
+// };
+// testConnection();
+
+// async function testingConnection() {
+//   try {
+//     await database.sync();
+//     console.log('Connected to the Database')
+//   } catch {
+//     console.log('Did not connect to the database')
+//   }
+// };
+// testingConnection()
+
+
 
 
 
@@ -51,6 +62,7 @@ app.get('/', (req, res) => {
   res.send("Hello");
 })
 
-// app.listen(process.env.APP_PORT, () => {
-//   console.log("HEHE"); 
-// });
+
+app.listen(process.env.APP_PORT, () => {
+  console.log("Server is up and Running"); 
+});
