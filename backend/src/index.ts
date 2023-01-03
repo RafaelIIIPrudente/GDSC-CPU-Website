@@ -8,11 +8,9 @@ import userRoute from "./routes/userRoute";
 //automatically loads environment variables from a . env file into the process. env object.
 dotenv.config();
 
-
 const app = express();
 
 //database sync
-
 // async function testingConnection() {
 //   try {
 //     await database.sync();
@@ -23,11 +21,8 @@ const app = express();
 // };
 // testingConnection()
 
-
-
-
-
-//frontend can send requests along with cooking and by including their credentials
+//frontend can send requests along with cooking and by including their credentials. 
+//cors provides Express middleware to enable CORS with various options
 app.use(cors({
   credentials:true,
   origin: 'http://localhost:3000' //domain allowed here is the one we will be using in the frontend
@@ -48,7 +43,7 @@ app.use(session({
 }))
 
 //User router
-app.use(userRoute)
+app.use(userRoute);
 
 //
 app.get('/', (req: Request, res: Response) => {
@@ -59,5 +54,5 @@ app.get('/', (req: Request, res: Response) => {
 //running the server
 const port: number = 5000
 app.listen(port, () => {
-  console.log("Server is up and Running"); 
+  console.log("Server is up and Running....."); 
 });
