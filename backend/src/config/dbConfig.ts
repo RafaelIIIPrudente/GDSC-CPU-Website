@@ -1,3 +1,4 @@
+//configurations used in database module 
 const dbConfig = {
     HOST: 'localhost',
     USER: 'root',
@@ -5,6 +6,6 @@ const dbConfig = {
     DATABASE: 'auth_db',
     DIALECT: "mysql",
     PORT: 3306,
-}
+};
 
 export default dbConfig;
