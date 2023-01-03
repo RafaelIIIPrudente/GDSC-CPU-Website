@@ -1,33 +1,45 @@
-POST http://localhost:5000/users
-content-type: application/json;
-
-{
+//CREATE USER
+curl --location --request POST 'http://localhost:5000/users' \
+--header 'content-type: application/json' \
+--data-raw '{
   "name": "Rafael III",
   "email": "rflprdnt@gmail.com",
   "password": "rappy",
   "confPassword": "rappy",
   "role": "admin"
-}
+}'
 
+//GET ALL USERS
+###
+curl --location --request GET 'http://localhost:5000/users' \
+
+//GET USER
 ###'
-GET http://localhost:5000/users
+curl --location --request GET 'http://localhost:5000/users/6da3f2e2-e61e-494f-8be8-1a5e13bb47c8' \
+--header 'Cookie: connect.sid=s%3AYVSFjPK3ZKpjehIU5qEvJ-UUteq_VbDT.AvLkoGPH3Jj8M66%2Fo7b6U%2FYPcYN2d7pHqMfw5%2BZeVLU' \
+--data-raw ''
 
-###'
-GET http://localhost:5000/users/:id
-
+//UPDATE
 ###
 //update users   (code after "user/" needed)
-PATCH http://localhost:5000/users/
-Content-Type: application/json
+curl --location --request PATCH 'http://localhost:5000/users/6da3f2e2-e61e-494f-8be8-1a5e13bb47c8' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: connect.sid=s%3A5fxFwe3OduZQqCSn9hdTlwAB7f_QUSwl.ID63796bKQFkM8Nhgj2N1ntMKUNIz0kCXqJ0JI5X6A4' \
+--data-raw '{
+    "name": "Rafael III Updated",
+    "email": "rflprdnt@gmail.com",
+    "password": "paul",
+    "confPassword": "paul",
+    "role": "admin"
+}'
 
-{
-  name: "Rafael III Updated",
-  emai: "rflprdnt@gmail.com",
-  password: "",
-  confPassword: ""
-  role: "admin"
+//DELETE USER
+###
+curl --location --request DELETE 'http://localhost:5000/users/6da3f2e2-e61e-494f-8be8-1a5e13bb47c8' \
+--header 'Cookie: connect.sid=s%3AYVSFjPK3ZKpjehIU5qEvJ-UUteq_VbDT.AvLkoGPH3Jj8M66%2Fo7b6U%2FYPcYN2d7pHqMfw5%2BZeVLU'
 
-}
+
+
 
 ###
 //Login User
