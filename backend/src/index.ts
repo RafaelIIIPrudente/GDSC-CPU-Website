@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
@@ -37,8 +37,9 @@ app.use(cors({
 app.use(express.json());
 
 //used to create and manage a session middleware
+const SESS_SECRET: string = '21r8y3f4fhjkjefh982y3hri2jfwjkfh3ur83Gd83hd3h'
 app.use(session({
-  secret: '',
+  secret: SESS_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -49,6 +50,14 @@ app.use(session({
 //User router
 app.use(userRoute)
 
-app.listen(process.env.APP_PORT, () => {
+//
+app.get('/', (req: Request, res: Response) => {
+  console.log("calling the get method, but this is not what we want.")
+  res.send("okay")
+});
+
+//running the server
+const port: number = 5000
+app.listen(port, () => {
   console.log("Server is up and Running"); 
 });
