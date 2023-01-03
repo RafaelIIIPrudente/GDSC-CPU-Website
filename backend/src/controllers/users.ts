@@ -93,6 +93,7 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
+
 export const deleteUser = async(req: Request, res: Response) => {
   const user = await Users.findOne({
     
@@ -114,7 +115,7 @@ export const deleteUser = async(req: Request, res: Response) => {
         id: user.id
       }
     })
-    res.status(200).json({msg: "User Deleted"})
+    res.status(200).json({msg: "Successfully Deleted a User"})
   } catch (error: any) {
     res.status(400).json({msg: error.message});
   }
