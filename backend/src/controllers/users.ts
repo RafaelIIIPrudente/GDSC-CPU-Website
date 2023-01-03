@@ -46,56 +46,55 @@ export const createUser = async(req: Request, res: Response) => {
 };
 
 export const updateUser = async (req: Request, res: Response) => {
-  const user = await Users.findOne({
-    
-    where: {
-      uuid: req.params.id
-    }
-  });
-  if(!Users) return res.status(404).json({msg: "User not found"})
-  const {name, email, password, confPassword, role} = req.body;
-  let hashPassword;
-  if(password === "" || password === null) {
-    hashPassword = Users.password
-  } else {
-    hashPassword = await argon2.hash(password);
-  }
-  if(password !== confPassword) return res.status(400).json({msg: "Password does not match!"})
-  try {
-    await Users.update({
-      name:name,
-      email: email,
-      password: password,
-      role: role
-    },{
-      where:{
-        id: Users.id
-      }
-    })
-    res.status(200).json({msg: "User Updated"})
-  } catch (error: any) {
-    res.status(400).json({msg: error.message});
-  }
+  // const user = await Users.findOne({    
+  //   where: {
+  //     uuid: req.params.id
+  //   }
+  // });
+  // if(!Users) return res.status(404).json({msg: "User not found"})
+  // const {name, email, password, confPassword, role} = req.body;
+  // var hashPassword: string; 
+  // if(password === "" || password === null) {
+  //   hashPassword = user.password
+  // } else {
+  //   hashPassword = await argon2.hash(password);
+  // }
+  // if(password !== confPassword) return res.status(400).json({msg: "Password does not match!"})
+  // try {
+  //   await Users.update({
+  //     name:name,
+  //     email: email,
+  //     password: password,
+  //     role: role
+  //   },{
+  //     where:{
+  //       id: user.id
+  //     }
+  //   })
+  //   res.status(200).json({msg: "User Updated"})
+  // } catch (error: any) {
+  //   res.status(400).json({msg: error.message});
+  // }
 };
 
 export const deleteUser = async(req: Request, res: Response) => {
-  const user = await Users.findOne({
+  // const user = await Users.findOne({
     
-    where: {
-      uuid: req.params.id
-    }
-  });
-  if(!Users) return res.status(404).json({msg: "User not found"});
-  try {
-    await Users.destroy({
-      where:{
-        id: Users.id
-      }
-    })
-    res.status(200).json({msg: "User Deleted"})
-  } catch (error: any) {
-    res.status(400).json({msg: error.message});
-  }
+  //   where: {
+  //     uuid: req.params.id
+  //   }
+  // });
+  // if(!Users) return res.status(404).json({msg: "User not found"});
+  // try {
+  //   await Users.destroy({
+  //     where:{
+  //       id: user.id
+  //     }
+  //   })
+  //   res.status(200).json({msg: "User Deleted"})
+  // } catch (error: any) {
+  //   res.status(400).json({msg: error.message});
+  // }
 };
 
 
