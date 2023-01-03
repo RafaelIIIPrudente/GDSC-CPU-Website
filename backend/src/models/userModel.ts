@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import database from "../config/database";
 
-const Users = database.define('users', {
+const Users  = database.define('users', {
   uuid: {
     type: DataTypes.STRING,
     defaultValue: DataTypes.UUIDV4,
