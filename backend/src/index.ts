@@ -3,6 +3,7 @@ import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
 import userRoute from "./routes/userRoute";
+import authRoute from "./routes/authRoute";
 // import database from "./config/database"
 
 //automatically loads environment variables from a . env file into the process. env object.
@@ -44,11 +45,12 @@ app.use(session({
 
 //User router
 app.use(userRoute);
+app.use(authRoute);
 
 //
 app.get('/', (req: Request, res: Response) => {
   console.log("calling the get method, but this is not what we want.")
-  res.send("okay")
+  res.send("Server is Up")
 });
 
 //running the server
