@@ -1,123 +1,125 @@
 import Users from "../models/userModel";
-import argon2  from "argon2";
+import argon2 from "argon2";
 import { Request, Response } from "express";
 
-export const getUsers = async(req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
 
   try {
     var response = await Users.findAll({
-      attributes:['uuid','id', 'name', 'email', 'role']
-    }) .catch((e) => {
+      attributes: ['uuid', 'id', 'name', 'email', 'role']
+    }).catch((e) => {
       console.error(e.message); // "oh, no!"
     });
     res.status(200).json(response);
   } catch (error: any) {
-    res.status(500).json({msg: error.message});
+    res.status(500).json({ msg: error.message });
   }
 };
 
-export const getUserById = async(req: Request, res: Response) => {
+export const getUserById = async (req: Request, res: Response) => {
 
   try {
     const response = await Users.findOne({
-      attributes:['id', 'name', 'email', 'role'],
+      attributes: ['uuid', 'id', 'name', 'email', 'role'],
       where: {
         uuid: req.params.id
       }
     });
     res.status(200).json(response);
   } catch (error: any) {
-    res.status(500).json({msg: error.message});
+    res.status(500).json({ msg: error.message });
   }
 };
 
-export const createUser = async(req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response) => {
 
-  const {name, email, password, confPassword, role} = req.body;
+  const { name, email, password, confPassword, role } = req.body;
 
-  if(password !== confPassword) return res.status(400).json({msg: "Password does not match!"})
-  
+  if (password !== confPassword) return res.status(400).json({ msg: "Password does not match!" })
+
   const hashPassword: string = await argon2.hash(password);
 
   try {
     await Users.create({
-      name:name,     
+      name: name,
       email: email,
       password: hashPassword,
       role: role
-    }) .catch((e) => {
-      console.error(e.message); // "oh, no!"
-    }) 
-    res.status(201).json({msg: "Succesfully Registered!"})
+    }).catch((e) => {
+      console.error(e.message);
+    })
+    res.status(201).json({ msg: "Succesfully Registered!" })
   } catch (err: any) {
-    res.status(400).json({msg: "Unsuccesful!"});
-  } 
-} ;
+    res.status(400).json({ msg: "Unsuccesful!" });
+  }
+};
 
 export const updateUser = async (req: Request, res: Response) => {
-  var user = await Users.findOne({    
+  var user = await Users.findOne({
     where: {
       uuid: req.params.id
     }
-  }) .catch((e) => {
-    console.error(e.message); // "oh, no!"
-  }) .then((user) => {
+  }).catch((e) => {
+    console.error(e.message);
+  }).then((user) => {
     return user?.get({
-      plain:true
+      plain: true
     })
   });
 
-  if(!Users) return res.status(404).json({msg: "User not found"})
-  const {name, email, password, confPassword, role} = req.body;
-  var hashPassword: string; 
-  if(password === "" || password === null) {
+  if (!Users) return res.status(404).json({ msg: "User not found" })
+  const { name, email, password, confPassword, role } = req.body;
+  var hashPassword: string;
+  if (password === "" || password === null) {
     hashPassword = user.password
   } else {
     hashPassword = await argon2.hash(password);
   }
-  if(password !== confPassword) return res.status(400).json({msg: "Password does not match!"})
+
+  if (password !== confPassword) return res.status(400).json({ msg: "Password does not match!" })
+
   try {
     await Users.update({
-      name:name,
+      name: name,
       email: email,
       password: password,
       role: role
-    },{
-      where:{
+    }, {
+      where: {
         id: user.id
       }
     })
-    res.status(200).json({msg: "User Updated"})
+    res.status(200).json({ msg: "User Updated" })
   } catch (error: any) {
-    res.status(400).json({msg: error.message});
+    res.status(400).json({ msg: error.message });
   }
 };
 
 
-export const deleteUser = async(req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
   const user = await Users.findOne({
-    
+
     where: {
       uuid: req.params.id
     }
-  }) .catch((e) => {
+  }).catch((e) => {
     console.error(e.message); // "oh, no!"
-  }) .then((user) => {
+  }).then((user) => {
     return user?.get({
-      plain:true
+      plain: true
     })
   });;
 
-  if(!Users) return res.status(404).json({msg: "User not found"});
+  if (!Users) return res.status(404).json({ msg: "User not found" });
   try {
     await Users.destroy({
-      where:{
+      where: {
         id: user.id
       }
     })
-    res.status(200).json({msg: "Successfully Deleted a User"})
+    res.status(200).json({ msg: "Successfully Deleted a User" })
   } catch (error: any) {
-    res.status(400).json({msg: error.message});
+    res.status(400).json({ msg: error.message });
   }
 };
 
