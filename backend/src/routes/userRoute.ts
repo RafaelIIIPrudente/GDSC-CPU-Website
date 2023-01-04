@@ -1,4 +1,3 @@
-import { verify } from 'crypto';
 import express from 'express';
 import { getUsers } from '../controllers/users';
 import { getUserById } from '../controllers/users';
