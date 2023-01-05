@@ -5,7 +5,9 @@ import SequelizeStore from "connect-session-sequelize"
 import dotenv from 'dotenv';
 import userRoute from "./routes/userRoute";
 import authRoute from "./routes/authRoute";
+import eventsRoute from "./routes/eventsRoute";
 import database from "./config/database"
+
 
 //automatically loads environment variables from a . env file into the process. env object.
 dotenv.config();
@@ -44,6 +46,7 @@ app.use(session({
 //User router
 app.use(userRoute);
 app.use(authRoute);
+app.use(eventsRoute);
 
 //
 app.get('/', (req: Request, res: Response) => {

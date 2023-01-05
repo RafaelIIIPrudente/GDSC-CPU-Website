@@ -7,7 +7,7 @@ export const getUsers = async (req: Request, res: Response) => {
   try {
     var response = await Users.findAll({
       attributes: ['uuid', 'id', 'name', 'email', 'role']
-    }).catch((e) => {
+    }) .catch((e) => {
       console.error(e.message); // "oh, no!"
     });
     res.status(200).json(response);
