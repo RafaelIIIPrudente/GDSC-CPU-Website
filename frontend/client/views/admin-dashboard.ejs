@@ -1,0 +1,35 @@
+<%- include('partials/admin-header') -%> 
+
+  <div class="greetings">
+    <div class="navbar">
+      <div class="container container-dashboard">   
+        <div class="col-sm-4" style="border-right: 1px solid #dadce0">
+          <h1>Admin Dashboard</h1>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item dash-options">
+              <a href="#" style="text-decoration: none !important;" onclick="generateEventForm()">
+                <h6>Events</h3>
+              </a>
+            </li>
+            <li class="list-group-item dash-options">
+              <a href="#" style="text-decoration: none !important;" onclick="generateNewsletterForm()">
+                <h6>Newsletters</h3>
+              </a>
+            </li>
+            <li class="list-group-item dash-options">
+              <a href="#" style="text-decoration: none !important;" onclick="generateAdminPanel()">
+                <h6>Manage Admins</h3>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-8" style="background-color: #fff;">
+          Editing Pane
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>
