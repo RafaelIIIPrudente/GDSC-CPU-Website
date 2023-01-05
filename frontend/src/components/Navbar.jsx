@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import logo from "../logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
 
@@ -17,42 +16,26 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav
-        className="navbar is-fixed-top has-shadow"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div className="navbar-brand">
-          <NavLink to="/dashboard" className="navbar-item">
-            <img src={logo} width="112" height="28" alt="logo" />
-          </NavLink>
+          <nav class="navbar nav-home bg-light navbar-hr">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src={'/images/logo-nav.png'} alt="Logo" style={{height: 30}} class="d-inline-block align-text-top"></img>
+          <span class="uni-name">GDSC CPU</span> 
+        </a>
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/event">Events</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-          <a
-            href="!#"
-            role="button"
-            className="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <button onClick={logout} className="button is-light">
-                  Log out
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
     </div>
   );
 };

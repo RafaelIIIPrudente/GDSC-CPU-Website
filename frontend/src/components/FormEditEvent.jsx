@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const FormAddProduct = () => {
+const FormEditEvent = () => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [eventLead, setEventLead] = useState("");
   const [eventDescription, setEventDescription] = useState("");
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const saveEvent = async (e) => {
+  useEffect(() => {
+    const getEventById = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/events/${id}`);
+        setTitle(response.data.title);
+        setDate(response.data.date);
+        setEventLead(response.data.eventLead);
+        setEventDescription(response.data.eventDescription);
+      } catch (error) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+        }
+      }
+    };
+    getEventById();
+  }, [id]);
+
+  const updateEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/events", {
+      await axios.patch(`http://localhost:5000/events/${id}`, {
         title: title,
         date: date,
         eventLead: eventLead,
-        eventDescription: eventDescription,
-
+        eventDescription: eventDescription
       });
       navigate("/events");
     } catch (error) {
       if (error.response) {
-        setDate(error.response.data.msg);
+        setMsg(error.response.data.msg);
       }
     }
   };
@@ -30,12 +48,12 @@ const FormAddProduct = () => {
   return (
     <div>
       <h1 className="title">Events</h1>
-      <h2 className="subtitle">Add New Event</h2>
+      <h2 className="subtitle">Edit Event</h2>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
-            <form onSubmit={saveEvent}>
-              <p className="has-text-centered">{date}</p>
+            <form onSubmit={updateEvent}>
+              <p className="has-text-centered">{msg}</p>
               <div className="field">
                 <label className="label">Title</label>
                 <div className="control">
@@ -44,7 +62,7 @@ const FormAddProduct = () => {
                     className="input"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter title"
+                    placeholder="Event Name"
                   />
                 </div>
               </div>
@@ -56,7 +74,7 @@ const FormAddProduct = () => {
                     className="input"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    placeholder="Enter date"
+                    placeholder="Date"
                   />
                 </div>
               </div>
@@ -68,7 +86,7 @@ const FormAddProduct = () => {
                     className="input"
                     value={eventLead}
                     onChange={(e) => setEventLead(e.target.value)}
-                    placeholder="Enter lead name"
+                    placeholder="Event Lead"
                   />
                 </div>
               </div>
@@ -80,7 +98,7 @@ const FormAddProduct = () => {
                     className="input"
                     value={eventDescription}
                     onChange={(e) => setEventDescription(e.target.value)}
-                    placeholder="Enter description"
+                    placeholder="Description"
                   />
                 </div>
               </div>
@@ -88,7 +106,7 @@ const FormAddProduct = () => {
               <div className="field">
                 <div className="control">
                   <button type="submit" className="button is-success">
-                    Publish
+                    Update
                   </button>
                 </div>
               </div>
@@ -100,4 +118,4 @@ const FormAddProduct = () => {
   );
 };
 
-export default FormAddProduct;
+export default FormEditEvent;

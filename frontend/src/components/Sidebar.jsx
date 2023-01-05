@@ -22,12 +22,12 @@ const Sidebar = () => {
         <ul className="menu-list">
           <li>
             <NavLink to={"/dashboard"}>
-              <IoHome /> Dashboard
+              <IoHome/> Dashboard
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/products"}>
-              <IoPricetag /> Products
+            <NavLink to={"/events"}>
+              <IoPricetag /> Events
             </NavLink>
           </li>
         </ul>
@@ -47,8 +47,8 @@ const Sidebar = () => {
         <p className="menu-label">Settings</p>
         <ul className="menu-list">
           <li>
-            <button onClick={logout} className="button is-white">
-              <IoLogOut /> Logout
+            <button  onClick={logout} className="logout">
+              <IoLogOut style={{color: '#363636'}} /> Logout
             </button>
           </li>
         </ul>

@@ -25,52 +25,33 @@ const Login = () => {
   };
 
   return (
-    <section className="hero is-fullheight is-fullwidth">
-      <div className="hero-body">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-4">
-              <form onSubmit={Auth} className="box">
-                {isError && <p className="has-text-centered">{message}</p>}
-                <h1 className="title is-2">Sign In</h1>
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input
-                      type="text"
-                      className="input"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control">
-                    <input
-                      type="password"
-                      className="input"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="******"
-                    />
-                  </div>
-                </div>
-                <div className="field mt-5">
-                  <button
-                    type="submit"
-                    className="button is-success is-fullwidth"
-                  >
-                    {isLoading ? "Loading..." : "Login"}
-                  </button>
-                </div>
-              </form>
+    <>
+<section className="hero is-fullheight is-fullwidth">
+     <div class="create-event-form">
+    <div class="greetings create-event-form">
+      <div class="navbar">
+        <div class="container event-form"  style={{alignItems: 'center'}}>
+          <form onSubmit={Auth}>
+          {isError && <p className="has-text-centered">{message}</p>}
+            <div class="form-group form-item title-admin-login" style={{alignItems: 'flex-end'}}>
+              <h1 class="temp-title" style={{fontSize: 45, color: 'black', fontWeight: 500}}>Admin Login</h1>
             </div>
-          </div>
+            <div class="form-group form-item">
+              <label>Email</label>
+              <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} class="form-control" placeholder="Enter email" required/>
+            </div>
+            <div class="form-group form-item">
+              <label>Password</label>
+              <input type="password"  value={password} onChange={(e) => setPassword(e.target.value)} class="form-control" placeholder="Enter password" required/>
+            </div>
+            <button type="submit" class="btn btn-primary form-item" style={{marginTop: 20}}>{isLoading ? "Loading..." : "Login"}</button>
+          </form>
         </div>
       </div>
+    </div>
+  </div>
     </section>
+    </> 
   );
 };
 

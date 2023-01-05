@@ -2,56 +2,51 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
+const EventList = () => {
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    getProducts();
+    getEvents();
   }, []);
 
-  const getProducts = async () => {
-    const response = await axios.get("http://localhost:5000/products");
-    setProducts(response.data);
+  const getEvents = async () => {
+    const response = await axios.get("http://localhost:5000/events");
+    setEvents(response.data);
   };
 
-  const deleteProduct = async (productId) => {
-    await axios.delete(`http://localhost:5000/products/${productId}`);
-    getProducts();
+  const deleteEvent = async (eventId) => {
+    await axios.delete(`http://localhost:5000/events/${eventId}`);
+    getEvents();
   };
 
   return (
     <div>
-      <h1 className="title">Products</h1>
-      <h2 className="subtitle">List of Products</h2>
-      <Link to="/products/add" className="button is-primary mb-2">
+      <h1 className="title">Events</h1>
+      <h2 className="subtitle">List of Events</h2>
+      <Link to="/events/add" style={{backgroundColor: '#00A150'}} className="button is-primary mb-2">
         Add New
       </Link>
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
             <th>No</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Created By</th>
-            <th>Actions</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Event Lead</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product, index) => (
-            <tr key={product.uuid}>
+          {events.map((event, index) => (
+            <tr key={event.uuid}>
               <td>{index + 1}</td>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{product.user.name}</td>
+              <td>{event.title}</td>
+              <td>{event.date}</td>
+              <td>{event.eventLead}</td>
+              <td>{event.eventDescription}</td>
               <td>
-                <Link
-                  to={`/products/edit/${product.uuid}`}
-                  className="button is-small is-info"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => deleteProduct(product.uuid)}
+                <button style={{backgroundColor: '#E94336'}}
+                  onClick={() => deleteEvent(event.uuid)}
                   className="button is-small is-danger"
                 >
                   Delete
@@ -65,4 +60,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default EventList;

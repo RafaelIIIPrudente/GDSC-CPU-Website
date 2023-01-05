@@ -23,7 +23,7 @@ const Userlist = () => {
     <div>
       <h1 className="title">Users</h1>
       <h2 className="subtitle">List of Users</h2>
-      <Link to="/users/add" className="button is-primary mb-2">
+      <Link to="/users/add" style={{backgroundColor: '#00A150'}} className="button is-primary mb-2">
         Add New
       </Link>
       <table className="table is-striped is-fullwidth">
@@ -44,13 +44,13 @@ const Userlist = () => {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
-                <Link
+                <Link style={{backgroundColor: '#FABB08', marginRight: 10}}
                   to={`/users/edit/${user.uuid}`}
                   className="button is-small is-info"
                 >
                   Edit
-                </Link>
-                <button
+                </Link> 
+                <button style={{backgroundColor: '#E94336'}}
                   onClick={() => deleteUser(user.uuid)}
                   className="button is-small is-danger"
                 >
