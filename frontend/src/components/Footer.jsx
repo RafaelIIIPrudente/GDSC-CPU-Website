@@ -58,7 +58,6 @@ const Footer = () => {
     <p class="navbar-brand" href="/">
       <span class="uni-name-footer">
         <button type="button" class="btn btn-danger" style={{backgroundColor: '#ea4335'}}><a class="btn-red" href="http://localhost:3000/login" style={{color: '#fff', textDecoration: 'none'}}>Log in as Admin</a></button>
-        <button type="button" class="btn btn-success" style={{backgroundColor: '#0F9D58'}}><a class="btn-green" href="http://localhost:3000/newsletter-signup" style={{color: '#fff', textDecoration: 'none', borderColor: '#0F9D58'}}>Receive Newsletters!</a></button>
       </span> 
     </p>
   </div>
