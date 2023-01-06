@@ -10,6 +10,8 @@ const router = express.Router();
 
 //routes 
 router.get('/events',verifyUser, getEvents);
+router.get('/event-page',verifyUser, getEvents);
+
 router.get('/events/:id', verifyUser, getEventsById);
 router.post('/events', verifyUser, createEvents);
 router.patch('/events/:id', verifyUser, updateEvents);

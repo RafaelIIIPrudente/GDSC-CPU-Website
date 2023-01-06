@@ -35,7 +35,7 @@ const FormAddProduct = () => {
         <div className="card-content">
           <div className="content">
             <form onSubmit={saveEvent}>
-              <p className="has-text-centered">{date}</p>
+              <p className="has-text-centered">{title}</p>
               <div className="field">
                 <label className="label">Title</label>
                 <div className="control">
