@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Layout from "./Layout";
-import EventsList from "../components/ProductList";
+import EventsList from "../components/EventList";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";

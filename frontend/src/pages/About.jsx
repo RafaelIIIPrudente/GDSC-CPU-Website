@@ -56,7 +56,7 @@ const About = () => {
         <div class="container text-center">
           <div class="row row-cols-2">
             <div class="col">
-              <iframe width="715" height="402" src="https://www.youtube.com/embed/Oniedo3CBDE" title="Dang’s story as a Google Developer Student Club lead" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="715" height="402" src="https://www.youtube.com/embed/OBoMpyVSsl8" title="Dang’s story as a Google Developer Student Club lead" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="col">
               <div class="lead-about-caption" style={{textAlign: 'left'}}>

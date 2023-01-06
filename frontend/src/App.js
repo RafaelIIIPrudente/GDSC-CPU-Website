@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Login from "./components/Login";
 import Users from "./pages/Users";
 import Events from "./pages/Events";
+import EventPage from "./pages/EventPage";
 import AddUser from "./pages/AddUser";
 import EditUser from "./pages/EditUser";
 import AddProduct from "./pages/AddProduct";
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/event-page" element={<EventPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/newsletter-signup" element={<NewsLetterSignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
