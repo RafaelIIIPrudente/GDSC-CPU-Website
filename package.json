@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cd frontend && npm build",
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm run dev",
     "start": "concurrently \" npm run frontend\" \"npm run backend",
