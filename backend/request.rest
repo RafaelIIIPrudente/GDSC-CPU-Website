@@ -28,7 +28,7 @@ curl --location --request PATCH 'http://localhost:5000/users/cc3e887f-a695-4828-
 --data-raw '{
     "name": "Lo",
     "email": "@gmail.com",
-    "password": "pau2",
+    "password": "ds",
     "confPassword": "paula2",s
     "role": "user"
 }'
