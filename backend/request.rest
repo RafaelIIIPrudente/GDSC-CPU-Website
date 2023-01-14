@@ -26,10 +26,10 @@ curl --location --request PATCH 'http://localhost:5000/users/cc3e887f-a695-4828-
 --header 'Content-Type: application/json' \
 --header 'Cookie: connect.sid=s%3A5fxFwe3OduZQqCSn9hdTlwAB7f_QUSwl.ID63796bKQFkM8Nhgj2N1ntMKUNIz0kCXqJ0JI5X6A4' \
 --data-raw '{
-    "name": "Lerado",
+    "name": "Lo",
     "email": "@gmail.com",
-    "password": "paula2",
-    "confPassword": "paula2",
+    "password": "pau2",
+    "confPassword": "paula2",s
     "role": "user"
 }'
 
