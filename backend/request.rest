@@ -29,7 +29,7 @@ curl --location --request PATCH 'http://localhost:5000/users/cc3e887f-a695-4828-
     "name": "Lo",
     "email": "@gmail.com",
     "password": "ds",
-    "confPassword": "paula2",s
+    "confPassword": "a2",s
     "role": "ur"
 }'
 
